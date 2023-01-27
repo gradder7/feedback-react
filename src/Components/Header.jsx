@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export default function Header(props) {
   // we can also take style in varailbles
@@ -12,7 +13,9 @@ export default function Header(props) {
   return (
     <header style={headerStyle}>
       <div className="container">
-        <h2>{props.text}-Header</h2>
+        <h2>
+          <Link to="/" style={{textStyle:'none'}}>{props.text}-Header</Link>
+        </h2>
       </div>
     </header>
   );
