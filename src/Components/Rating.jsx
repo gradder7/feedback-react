@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState ,useEffect} from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-export default function Rating({selected}) {
+export default function Rating({ selected }) {
   const [select, setSelect] = useState(10);
   const numRating = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const handleChange = (e) => {
@@ -11,6 +12,14 @@ export default function Rating({selected}) {
     //we will pass it to up using the function passed as a prop by FeedbackFrom
     selected(+e.currentTarget.value);
   };
+
+
+  // chnage the rating click of edit
+  const { feedBackEdit } = useContext(FeedbackContext);
+  useEffect(() => {
+    setSelect(feedBackEdit.item.rating);
+  }, [feedBackEdit])
+  
   return (
     <ul className="rating">
       {numRating.map((li, index) => {

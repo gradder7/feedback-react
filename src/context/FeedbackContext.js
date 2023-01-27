@@ -14,6 +14,12 @@ export const FeedbackProvider = ({ children }) => {
       rating: 9,
     },
   ]);
+  
+  const [feedBackEdit, setFeedBackEdit] = useState({
+    // it will take full object that is being clicked to the item
+    item: {},
+    edit: false,
+  });
 
   // functions
   //add
@@ -36,11 +42,36 @@ export const FeedbackProvider = ({ children }) => {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+
+  //   edit
+  const editFeedback = (item) => {
+    setFeedBackEdit({
+        // item:item,
+      item,
+      edit:true,
+    });
+  };
+  //update
+  const updateItem=(id,updatedItem)=>{
+        setFeedback(feedback.map(item=>
+            item.id===id?{...item,...updatedItem}: item
+        ));
+    
+  }
   // return
   return (
     // when ever we wrap inside the feedbackContext all the childrens,
     //will pass here as a props
-    <FeedbackContext.Provider value={{ feedback, deleteFeedBack, addFeedback }}>
+    <FeedbackContext.Provider
+      value={{
+        feedback,
+        deleteFeedBack,
+        addFeedback,
+        editFeedback,
+        feedBackEdit,
+        updateItem,
+      }}
+    >
       {children}
     </FeedbackContext.Provider>
   );
