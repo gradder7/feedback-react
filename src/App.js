@@ -16,7 +16,7 @@ function App() {
   const [feedBack, setFeedBack] = useState(FeedbackData);
 
   // we have to provide the id to our feedback items
-  // npm install uuid
+  // npm install uuid 
   //to generate a unique id for each of out feedback items
   const addFeedback = (newFeedback) => {
     // add id to newFeedback
