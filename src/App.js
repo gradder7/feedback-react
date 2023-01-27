@@ -53,8 +53,9 @@ function App() {
             }>
             </Route>
             <Route exact path="/about" element={<About />} />
-            {/* :id id is params which we will recive in componenet as a object from useParams*/}
-            <Route exact path="/post/:id/:name" element={<Post />} />
+            {/* /post/:id id is params which we will recive in componenet as a object from useParams*/}
+            {/* /post/* beacause it may have nested routes */}
+            <Route exact path="/post/*" element={<Post />} />
           </Routes>
 
           {/* nav links are used to chnage the classes when clicked on link */}
