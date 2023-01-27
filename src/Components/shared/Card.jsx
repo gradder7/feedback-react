@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from 'prop-types'
-
+import PropTypes from "prop-types";
 
 export default function Card({ children, reverse }) {
   // class conditional
   //   return <div className={`card ${reverse && "reverse"}`}>{children}</div>;
 
-  //   style conditional
+  //   style conditional and reverse 
   return (
     <div
       className="card"
@@ -15,16 +14,17 @@ export default function Card({ children, reverse }) {
         color: reverse ? "#fff" : "#000",
       }}
     >
-    {/* node */}
+      {/* node */}
       {children}
     </div>
   );
 }
+
 Card.defaultProps = {
-  reverse: true,
+  reverse: false,
 };
 
-Card.propTypes={
-    children:PropTypes.node.isRequired,
-    reverse:PropTypes.bool,
-}
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  reverse: PropTypes.bool,
+};
