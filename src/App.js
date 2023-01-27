@@ -7,9 +7,11 @@ import FeedbackLists from "./Components/FeedbackLists";
 import FeedbackStats from "./Components/FeedbackStats";
 import Header from "./Components/Header";
 import FeedbackData from "./data/FeedbackData";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route ,NavLink} from "react-router-dom";
 import About from "./pages/About";
 import AbouticonLink from "./Components/AbouticonLink";
+import Card from "./Components/shared/Card";
+import Post from "./Components/Post";
 
 function App() {
   // feedback data is an array in data folder
@@ -51,7 +53,19 @@ function App() {
             }>
             </Route>
             <Route exact path="/about" element={<About />} />
+            {/* :id id is params which we will recive in componenet as a object from useParams*/}
+            <Route exact path="/post/:id/:name" element={<Post />} />
           </Routes>
+
+          {/* nav links are used to chnage the classes when clicked on link */}
+          <Card>
+            <NavLink to='/' activeClassName='active'>
+              Home
+            </NavLink>
+            <NavLink to='/about' activeClassName='active'>
+              About
+            </NavLink>
+          </Card>
           <AbouticonLink/>
         </div>
       </Router>
