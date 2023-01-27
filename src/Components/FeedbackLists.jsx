@@ -3,9 +3,14 @@ import React from "react";
 //npm install framer-motion
 import { motion, AnimatePresence } from "framer-motion";
 import FeedbackItem from "./FeedbackItem";
-import PropTypes from "prop-types";
+// to use the context hook
+import { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-export default function FeedbackLists({ feedback, handleDelete }) {
+export default function FeedbackLists() {
+  // to get the feed back
+  const {feedback} = useContext(FeedbackContext);
+
   if (!feedback || feedback.length === 0) {
     return <p>No FeedBack Yet</p>;
   }
@@ -24,7 +29,6 @@ export default function FeedbackLists({ feedback, handleDelete }) {
             <FeedbackItem
               key={item.id}
               item={item}
-              handleDelete={handleDelete}
             />
           </motion.div>
           );
@@ -42,13 +46,3 @@ export default function FeedbackLists({ feedback, handleDelete }) {
   );
 }
 
-FeedbackLists.propTypes = {
-  // we can also set the prop type for the array and  objects in the array also
-  feedback: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-    })
-  ),
-  // or  feedback: PropTypes.array.isRequired,
-};
