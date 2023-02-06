@@ -12,7 +12,7 @@ export default function FeedbackForm() {
   const { addFeedback, feedBackEdit, updateItem } = useContext(FeedbackContext);
 
   // useeffect=>something happens on change sideEffects
-  // on click in edit set text, buton and rating 
+  // on click in edit set text, buton and rating
 
   useEffect(() => {
     if (feedBackEdit.edit === true) {
@@ -57,7 +57,6 @@ export default function FeedbackForm() {
       // console.log(newFeedback);
 
       if (feedBackEdit.edit === true) {
-        
         updateItem(feedBackEdit.item.id, newFeedback); //new feed back beacuse we are seeting the text onchange() this text will be in input when clicked
       } else {
         addFeedback(newFeedback);
